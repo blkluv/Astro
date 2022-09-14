@@ -22,7 +22,7 @@ function HomePage(props) {
       padding: theme.spacing(2),
       textAlign: "center",
       color: theme.palette.text.default,
-      fontSize: 12
+      fontSize: 12,
     },
     paperTwo: {
       paddingTop: 0,
@@ -32,34 +32,34 @@ function HomePage(props) {
       textAlign: "center",
       color: theme.palette.text.default,
       backgroundColor: "rgba(0,0,0,0.3)",
-      fontSize: 12
+      fontSize: 12,
     },
     switch: {
       fontSize: 12,
       color: "#888",
-      marginBottom: 10
+      marginBottom: 10,
     },
     button: {
-      color: "white"
+      color: "white",
     },
     formControl: {
       margin: theme.spacing(1),
-      minWidth: 120
+      minWidth: 120,
     },
     tabPanel: {
-      fontSize: 12
+      fontSize: 12,
     },
     textField: {
       marginLeft: theme.spacing(1),
       marginRight: theme.spacing(1),
-      width: 200
-    }
+      width: 200,
+    },
   }));
   const classes = useStyles();
   const theme = createMuiTheme({
     palette: {
-      type: "dark"
-    }
+      type: "dark",
+    },
   });
 
   function TabPanel(props) {
@@ -81,13 +81,13 @@ function HomePage(props) {
   TabPanel.propTypes = {
     children: PropTypes.node,
     index: PropTypes.any.isRequired,
-    value: PropTypes.any.isRequired
+    value: PropTypes.any.isRequired,
   };
 
   function a11yProps(index) {
     return {
       id: `full-width-tab-${index}`,
-      "aria-controls": `full-width-tabpanel-${index}`
+      "aria-controls": `full-width-tabpanel-${index}`,
     };
   }
   // index of swipable tabs initially set to 0
@@ -147,7 +147,7 @@ function HomePage(props) {
                     currenttab={value}
                     onChange={handleChangeArrow}
                     planetsQuery={planetsQuery}
-                    isFetching={props.isFetching}
+                    isLoading={props.isLoading}
                   />
                 </TabPanel>
                 <TabPanel
@@ -162,7 +162,7 @@ function HomePage(props) {
                     currenttab={value}
                     onChange={handleChangeArrow}
                     planetsQuery={planetsQuery}
-                    isFetching={props.isFetching}
+                    isLoading={props.isLoading}
                   />
                 </TabPanel>
                 <TabPanel
@@ -177,7 +177,7 @@ function HomePage(props) {
                     currenttab={value}
                     onChange={handleChangeArrow}
                     planetsQuery={planetsQuery}
-                    isFetching={props.isFetching}
+                    isLoading={props.isLoading}
                   />
                 </TabPanel>
                 <TabPanel
@@ -192,7 +192,7 @@ function HomePage(props) {
                     currenttab={value}
                     onChange={handleChangeArrow}
                     planetsQuery={planetsQuery}
-                    isFetching={props.isFetching}
+                    isLoading={props.isLoading}
                   />
                 </TabPanel>
                 <TabPanel
@@ -207,7 +207,7 @@ function HomePage(props) {
                     currenttab={value}
                     onChange={handleChangeArrow}
                     planetsQuery={planetsQuery}
-                    isFetching={props.isFetching}
+                    isLoading={props.isLoading}
                   />
                 </TabPanel>
                 <TabPanel
@@ -222,7 +222,7 @@ function HomePage(props) {
                     currenttab={value}
                     onChange={handleChangeArrow}
                     planetsQuery={planetsQuery}
-                    isFetching={props.isFetching}
+                    isLoading={props.isLoading}
                   />
                 </TabPanel>
                 <TabPanel
@@ -237,7 +237,7 @@ function HomePage(props) {
                     currenttab={value}
                     onChange={handleChangeArrow}
                     planetsQuery={planetsQuery}
-                    isFetching={props.isFetching}
+                    isLoading={props.isLoading}
                   />
                 </TabPanel>
               </SwipeableViews>

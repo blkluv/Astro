@@ -107,7 +107,7 @@ function MainComponent() {
 
   // data and methods for horoscope data
   const [planetsQuery, setPlanets] = useState(["", "", "", "", "", "", ""]);
-  const [isFetching, setIsFetching] = useState(false);
+  const [isLoading, setisLoading] = useState(false);
   const handleDate = (event) => {
     theBirthday(event.target.value);
   };
@@ -152,7 +152,7 @@ function MainComponent() {
 
   function getPlanets() {
     setPlanets(["", "", "", "", "", "", ""]);
-    setIsFetching(true);
+    setisLoading(true);
     let params = {
       ayanamsa: "1",
       chart_type: "`rasi`",
@@ -176,7 +176,7 @@ function MainComponent() {
         .then((res) => res.json())
         .then((data) => {
           if (data.data != undefined) {
-            setIsFetching(false);
+            setisLoading(false);
             setPlanets([
               data.data.planet_position[0],
               data.data.planet_position[1],
@@ -404,7 +404,7 @@ function MainComponent() {
           <Route
             path="/home"
             component={() => (
-              <HomePage planetsQuery={planetsQuery} isFetching={isFetching} />
+              <HomePage planetsQuery={planetsQuery} isLoading={isLoading} />
             )}
           />
           <Redirect to="/home" />

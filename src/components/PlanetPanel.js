@@ -64,18 +64,18 @@ function PlanetPanel(props) {
     signNumber(sign) === undefined
       ? "panelsign empty"
       : constelationClass[signNumber(sign)];
-  const leftarrowClass = () =>
-    props.currenttab <= 5 ? "leftarrow" : "leftarrow disabled";
   const rightarrowClass = () =>
-    props.currenttab >= 1 ? "rightarrow" : "rightarrow disabled";
-  function handleChangeLeft() {
+    props.currenttab <= 5 ? "rightarrow" : "rightarrow disabled";
+  const leftarrowClass = () =>
+    props.currenttab >= 1 ? "leftarrow" : "leftarrow disabled";
+  function handleChangeRight() {
     if (props.currenttab <= 5) {
       return props.onChange(props.currenttab + 1);
     } else {
       return null;
     }
   }
-  function handleChangeRight() {
+  function handleChangeLeft() {
     if (props.currenttab >= 1) {
       return props.onChange(props.currenttab - 1);
     } else {
@@ -88,7 +88,7 @@ function PlanetPanel(props) {
     signNumber(sign) === undefined ? planet : "Natal " + planet + " in " + sign;
   const planetDescription = () => {
     let message;
-    if (props.isFetching) {
+    if (props.isLoading) {
       message = "Loading data...";
     } else {
       signNumber(sign) === undefined
@@ -120,7 +120,7 @@ function PlanetPanel(props) {
   }
 
   function RenderLoader() {
-    if (props.isFetching) {
+    if (props.isLoading) {
       return (
         <Skeleton variant="circle" animation="wave" width={185} height={185} />
       );
