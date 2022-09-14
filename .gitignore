@@ -3,6 +3,8 @@
 # dependencies
 /node_modules
 /src/shared/apiData.js
+/src/shared/aspectData.js
+/src/shared/planetData.js
 access_token.js
 planets.psd
 /.pnp
