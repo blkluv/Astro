@@ -4,10 +4,12 @@ Click here for working demo: [https://astrology.alkemyst.co/]
 
 ## Version history
 
-### v0.5.0 - August 14, 2022
+### v0.5.1 - August 14, 2022
 
 - Updated API Call to use OAuth v2.0 (WIP)
 - Added workaround for CORS issues
+- Reversed arrow logic
+- Made version footer self-updating
 
 ### v0.2.0 - June 11th, 2020
 
