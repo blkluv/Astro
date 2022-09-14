@@ -6,11 +6,11 @@ function FooterText() {
       <br />
       <br />
       <a
-        href="https://github.com/erikksuzuki/petprojects/blob/master/astrology-app/README.md"
+        href="https://github.com/erikksuzuki/Astrology"
         target="_blank"
         style={{ color: "white" }}
       >
-        Version 1.30
+        Version 0.5.0
       </a>{" "}
       - by Eric Suzuki
     </div>
