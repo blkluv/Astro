@@ -36,7 +36,7 @@ import ListItemText from "@material-ui/core/ListItemText";
 
 import Button from "@material-ui/core/Button";
 
-import { apiData } from "../shared/apiData";
+import { apiData } from "../private/apiData";
 import HomePage from "./HomePage";
 
 function MainComponent() {

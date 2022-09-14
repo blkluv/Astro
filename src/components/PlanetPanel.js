@@ -1,5 +1,5 @@
 import React from "react";
-import { planetData } from "../shared/planetData";
+import { planetData } from "../private/planetData";
 import ReactHtmlParser from "react-html-parser";
 import { makeStyles } from "@material-ui/core/styles";
 
@@ -61,9 +61,13 @@ function PlanetPanel(props) {
 
   // data and methods for constelation image
   const panelsignClass = () =>
-    signNumber(sign) === undefined ? "panelsign empty" : constelationClass[signNumber(sign)];
-  const leftarrowClass = () => (props.currenttab <= 5 ? "leftarrow" : "leftarrow disabled");
-  const rightarrowClass = () => (props.currenttab >= 1 ? "rightarrow" : "rightarrow disabled");
+    signNumber(sign) === undefined
+      ? "panelsign empty"
+      : constelationClass[signNumber(sign)];
+  const leftarrowClass = () =>
+    props.currenttab <= 5 ? "leftarrow" : "leftarrow disabled";
+  const rightarrowClass = () =>
+    props.currenttab >= 1 ? "rightarrow" : "rightarrow disabled";
   function handleChangeLeft() {
     if (props.currenttab <= 5) {
       return props.onChange(props.currenttab + 1);
@@ -94,14 +98,18 @@ function PlanetPanel(props) {
     return message;
   };
   const paneldescriptionClass = () =>
-    signNumber(sign) === undefined ? "paneldescription emptier" : "paneldescription dropcap";
+    signNumber(sign) === undefined
+      ? "paneldescription emptier"
+      : "paneldescription dropcap";
 
   // data and methods for planet aspects
   const aspectList = GetPlanetAspects(props.planetsQuery, planet);
   function RenderAspects({ aspect }) {
     return (
       <div>
-        <div className={"aspecttitle " + aspect[3].toLowerCase()}>{aspect[0]}</div>
+        <div className={"aspecttitle " + aspect[3].toLowerCase()}>
+          {aspect[0]}
+        </div>
         <div className="aspectcontent">
           <p>
             {aspect[2]} {aspect[1]}
@@ -113,7 +121,9 @@ function PlanetPanel(props) {
 
   function RenderLoader() {
     if (props.isFetching) {
-      return <Skeleton variant="circle" animation="wave" width={185} height={185} />;
+      return (
+        <Skeleton variant="circle" animation="wave" width={185} height={185} />
+      );
     } else {
       return null;
     }
@@ -122,12 +132,23 @@ function PlanetPanel(props) {
   return (
     <div>
       <div className="panelsigncontainer">
-        <div className={panelsignClass()} style={constelationImages[signNumber(sign)]}>
+        <div
+          className={panelsignClass()}
+          style={constelationImages[signNumber(sign)]}
+        >
           <RenderLoader />
         </div>
         <img src={planetImage} className="panelplanet" />
-        <img src="leftarrow.png" className={leftarrowClass()} onClick={handleChangeLeft} />
-        <img src="rightarrow.png" className={rightarrowClass()} onClick={handleChangeRight} />
+        <img
+          src="leftarrow.png"
+          className={leftarrowClass()}
+          onClick={handleChangeLeft}
+        />
+        <img
+          src="rightarrow.png"
+          className={rightarrowClass()}
+          onClick={handleChangeRight}
+        />
       </div>
 
       <div className="paneltitle">{panelTitle()}</div>

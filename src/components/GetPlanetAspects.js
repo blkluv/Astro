@@ -1,4 +1,4 @@
-import { aspectData } from "../shared/aspectData";
+import { aspectData } from "../private/aspectData";
 
 function GetPlanetAspects(planetdata, planetName) {
   const planetIndex = (planetName) =>
@@ -41,51 +41,89 @@ function GetPlanetAspects(planetdata, planetName) {
   const totalAspectlist = [
     [
       GetAspect(Math.round(Math.abs(SkyLocation("Sun") - SkyLocation("Moon")))),
-      GetAspect(Math.round(Math.abs(SkyLocation("Sun") - SkyLocation("Mercury")))),
-      GetAspect(Math.round(Math.abs(SkyLocation("Sun") - SkyLocation("Venus")))),
+      GetAspect(
+        Math.round(Math.abs(SkyLocation("Sun") - SkyLocation("Mercury")))
+      ),
+      GetAspect(
+        Math.round(Math.abs(SkyLocation("Sun") - SkyLocation("Venus")))
+      ),
       GetAspect(Math.round(Math.abs(SkyLocation("Sun") - SkyLocation("Mars")))),
-      GetAspect(Math.round(Math.abs(SkyLocation("Sun") - SkyLocation("Jupiter")))),
-      GetAspect(Math.round(Math.abs(SkyLocation("Sun") - SkyLocation("Saturn")))),
+      GetAspect(
+        Math.round(Math.abs(SkyLocation("Sun") - SkyLocation("Jupiter")))
+      ),
+      GetAspect(
+        Math.round(Math.abs(SkyLocation("Sun") - SkyLocation("Saturn")))
+      ),
     ],
     [
       "None",
-      GetAspect(Math.round(Math.abs(SkyLocation("Moon") - SkyLocation("Mercury")))),
-      GetAspect(Math.round(Math.abs(SkyLocation("Moon") - SkyLocation("Venus")))),
-      GetAspect(Math.round(Math.abs(SkyLocation("Moon") - SkyLocation("Mars")))),
-      GetAspect(Math.round(Math.abs(SkyLocation("Moon") - SkyLocation("Jupiter")))),
-      GetAspect(Math.round(Math.abs(SkyLocation("Moon") - SkyLocation("Saturn")))),
-    ],
-    [
-      "None",
-      "None",
-      GetAspect(Math.round(Math.abs(SkyLocation("Mercury") - SkyLocation("Venus")))),
-      GetAspect(Math.round(Math.abs(SkyLocation("Mercury") - SkyLocation("Mars")))),
-      GetAspect(Math.round(Math.abs(SkyLocation("Mercury") - SkyLocation("Jupiter")))),
-      GetAspect(Math.round(Math.abs(SkyLocation("Mercury") - SkyLocation("Saturn")))),
-    ],
-    [
-      "None",
-      "None",
-      "None",
-      GetAspect(Math.round(Math.abs(SkyLocation("Venus") - SkyLocation("Mars")))),
-      GetAspect(Math.round(Math.abs(SkyLocation("Venus") - SkyLocation("Jupiter")))),
-      GetAspect(Math.round(Math.abs(SkyLocation("Venus") - SkyLocation("Saturn")))),
-    ],
-    [
-      "None",
-      "None",
-      "None",
-      "None",
-      GetAspect(Math.round(Math.abs(SkyLocation("Mars") - SkyLocation("Jupiter")))),
-      GetAspect(Math.round(Math.abs(SkyLocation("Mars") - SkyLocation("Saturn")))),
+      GetAspect(
+        Math.round(Math.abs(SkyLocation("Moon") - SkyLocation("Mercury")))
+      ),
+      GetAspect(
+        Math.round(Math.abs(SkyLocation("Moon") - SkyLocation("Venus")))
+      ),
+      GetAspect(
+        Math.round(Math.abs(SkyLocation("Moon") - SkyLocation("Mars")))
+      ),
+      GetAspect(
+        Math.round(Math.abs(SkyLocation("Moon") - SkyLocation("Jupiter")))
+      ),
+      GetAspect(
+        Math.round(Math.abs(SkyLocation("Moon") - SkyLocation("Saturn")))
+      ),
     ],
     [
       "None",
       "None",
+      GetAspect(
+        Math.round(Math.abs(SkyLocation("Mercury") - SkyLocation("Venus")))
+      ),
+      GetAspect(
+        Math.round(Math.abs(SkyLocation("Mercury") - SkyLocation("Mars")))
+      ),
+      GetAspect(
+        Math.round(Math.abs(SkyLocation("Mercury") - SkyLocation("Jupiter")))
+      ),
+      GetAspect(
+        Math.round(Math.abs(SkyLocation("Mercury") - SkyLocation("Saturn")))
+      ),
+    ],
+    [
       "None",
       "None",
       "None",
-      GetAspect(Math.round(Math.abs(SkyLocation("Jupiter") - SkyLocation("Saturn")))),
+      GetAspect(
+        Math.round(Math.abs(SkyLocation("Venus") - SkyLocation("Mars")))
+      ),
+      GetAspect(
+        Math.round(Math.abs(SkyLocation("Venus") - SkyLocation("Jupiter")))
+      ),
+      GetAspect(
+        Math.round(Math.abs(SkyLocation("Venus") - SkyLocation("Saturn")))
+      ),
+    ],
+    [
+      "None",
+      "None",
+      "None",
+      "None",
+      GetAspect(
+        Math.round(Math.abs(SkyLocation("Mars") - SkyLocation("Jupiter")))
+      ),
+      GetAspect(
+        Math.round(Math.abs(SkyLocation("Mars") - SkyLocation("Saturn")))
+      ),
+    ],
+    [
+      "None",
+      "None",
+      "None",
+      "None",
+      "None",
+      GetAspect(
+        Math.round(Math.abs(SkyLocation("Jupiter") - SkyLocation("Saturn")))
+      ),
     ],
     ["None", "None", "None", "None", "None", "None"],
   ];
