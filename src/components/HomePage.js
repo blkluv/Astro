@@ -16,7 +16,7 @@ import PlanetPanel from "./PlanetPanel";
 
 import FooterText from "./FooterText";
 
-function HomePage(props) {
+export default function HomePage(props) {
   const useStyles = makeStyles((theme) => ({
     paper: {
       padding: theme.spacing(2),
@@ -249,5 +249,3 @@ function HomePage(props) {
     </div>
   );
 }
-
-export default HomePage;

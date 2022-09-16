@@ -39,7 +39,7 @@ import Button from "@material-ui/core/Button";
 import { apiData } from "../private/apiData";
 import HomePage from "./HomePage";
 
-function MainComponent() {
+export default function MainComponent() {
   const useStyles = makeStyles((theme) => ({
     paper: {
       padding: theme.spacing(2),
@@ -89,11 +89,15 @@ function MainComponent() {
     },
   });
 
-  // data and methods for mobile menu drawer
+  const url = new URL(apiData.url);
+  const [fetchbuttonClass, setButtonclass] = useState("fetchbuttonDisabled");
+  const [planetsQuery, setPlanets] = useState(["", "", "", "", "", "", ""]);
+  const [userBirthday, setUserBirthday] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+  const [accessToken, setAcessToken] = useState("");
   const [drawerState, setDrawerState] = useState({
     left: false,
   });
-  const [accessToken, setAcessToken] = useState("");
 
   const toggleDrawer = (anchor, open) => (event) => {
     if (
@@ -105,20 +109,13 @@ function MainComponent() {
     setDrawerState({ ...drawerState, [anchor]: open });
   };
 
-  // data and methods for horoscope data
-  const [planetsQuery, setPlanets] = useState(["", "", "", "", "", "", ""]);
-  const [isLoading, setisLoading] = useState(false);
-  const handleDate = (event) => {
-    theBirthday(event.target.value);
-  };
-
   useEffect(() => {
     getAccessToken();
   }, []);
 
   async function getAccessToken() {
     const querystring = require("querystring");
-    setisLoading(true);
+    setIsLoading(true);
     const bodyParameters = {
       grant_type: "client_credentials",
       client_id: apiData.client_id,
@@ -141,21 +138,36 @@ function MainComponent() {
       })
       .then((data) => {
         setAcessToken("Bearer " + data.access_token);
-        setisLoading(false);
+        setIsLoading(false);
       })
       .catch((error) => {
         console.error("Failed to retrieve token from server");
         console.log(error);
-        setisLoading(false);
+        setIsLoading(false);
       });
   }
 
-  const url = new URL(apiData.url);
-  let userBirthday;
+  function handleDate(event) {
+    handleBirthdayState(event.target.value);
+  }
 
-  function getPlanets() {
+  function handleBirthdayState(date) {
+    setUserBirthday(date + "T12:00:00+00:00");
+    if (date !== undefined && date !== "") {
+      setButtonclass("fetchbutton");
+    } else {
+      setButtonclass("fetchbuttonDisabled");
+    }
+  }
+
+  function handleFetchButton() {
+    getPlanetPositions();
+  }
+
+  function getPlanetPositions() {
+    console.log("Thingy clicked");
     setPlanets(["", "", "", "", "", "", ""]);
-    setisLoading(true);
+    setIsLoading(true);
     let params = {
       ayanamsa: "1",
       chart_type: "`rasi`",
@@ -171,15 +183,22 @@ function MainComponent() {
       Accept: "application/json",
       "Content-Type": "application/json",
     };
-    if (userBirthday != undefined) {
+    if (userBirthday !== undefined) {
+      console.log("Fetch initiating");
       fetch(url, {
         method: "GET",
         headers: headers,
       })
-        .then((res) => res.json())
+        .then((res) => {
+          console.log("Fetch has happened");
+          console.log(res);
+          return res.json();
+        })
         .then((data) => {
+          console.log("Successfully fetched data");
+          console.log(data);
           if (data.data != undefined) {
-            setisLoading(false);
+            setIsLoading(false);
             setPlanets([
               data.data.planet_position[0],
               data.data.planet_position[1],
@@ -190,28 +209,19 @@ function MainComponent() {
               data.data.planet_position[6],
             ]);
           } else {
+            console.log("Data is undefined for some weird reason");
             setPlanets(["", "", "", "", "", "", ""]);
+            setIsLoading(false);
           }
+        })
+        .catch((error) => {
+          console.error("Something went wrong when trying to fetch");
         });
     } else {
+      console.error("Birthday is apparently undefined");
+      console.error("Birthday equals..." + userBirthday);
       return null;
     }
-  }
-
-  // data and methods for fetch data appearance
-  const [fetchbuttonClass, setButtonclass] = useState("fetchbuttonDisabled");
-  function theBirthday(date) {
-    userBirthday = date + "T12:00:00+00:00";
-    console.log(date);
-    if (date !== undefined && date !== "") {
-      console.log(date);
-      setButtonclass("fetchbutton");
-    } else {
-      setButtonclass("fetchbuttonDisabled");
-    }
-  }
-  function clickthingy() {
-    getPlanets();
   }
 
   return (
@@ -395,7 +405,7 @@ function MainComponent() {
               disabled={isLoading || fetchbuttonClass !== "fetchbutton"}
               className={isLoading ? "fetchbuttonDisabled" : fetchbuttonClass}
               variant="contained"
-              onClick={clickthingy}
+              onClick={handleFetchButton}
             >
               {isLoading
                 ? "Loading..."
@@ -419,5 +429,3 @@ function MainComponent() {
     </div>
   );
 }
-
-export default MainComponent;

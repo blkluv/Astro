@@ -4,8 +4,9 @@ Click here for working demo: [https://astrology.alkemyst.co/]
 
 ## Version history
 
-### v0.5.2 - September 15, 2022
+### v0.5.3 - September 15, 2022
 
+- Fixed bug with birthday state resetting on planet change
 - Added loading state to API fetch button
 
 ### v0.5.1 - August 14, 2022
