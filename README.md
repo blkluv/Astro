@@ -4,6 +4,10 @@ Click here for working demo: [https://astrology.alkemyst.co/]
 
 ## Version history
 
+### v0.5.2 - September 15, 2022
+
+- Added loading state to API fetch button
+
 ### v0.5.1 - August 14, 2022
 
 - Updated API Call to use OAuth v2.0 (WIP)

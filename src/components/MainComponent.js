@@ -118,6 +118,7 @@ function MainComponent() {
 
   async function getAccessToken() {
     const querystring = require("querystring");
+    setisLoading(true);
     const bodyParameters = {
       grant_type: "client_credentials",
       client_id: apiData.client_id,
@@ -140,10 +141,12 @@ function MainComponent() {
       })
       .then((data) => {
         setAcessToken("Bearer " + data.access_token);
+        setisLoading(false);
       })
       .catch((error) => {
         console.error("Failed to retrieve token from server");
         console.log(error);
+        setisLoading(false);
       });
   }
 
@@ -389,11 +392,14 @@ function MainComponent() {
         <Container maxWidth="sm">
           <Box display="flex" justifyContent="center">
             <Button
-              className={fetchbuttonClass}
+              disabled={isLoading || fetchbuttonClass !== "fetchbutton"}
+              className={isLoading ? "fetchbuttonDisabled" : fetchbuttonClass}
               variant="contained"
               onClick={clickthingy}
             >
-              {fetchbuttonClass == "fetchbutton"
+              {isLoading
+                ? "Loading..."
+                : fetchbuttonClass == "fetchbutton"
                 ? "Fetch Horoscope Data"
                 : "Enter Birth Date"}
             </Button>
