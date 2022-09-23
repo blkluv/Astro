@@ -5,7 +5,7 @@ import { makeStyles } from "@material-ui/core/styles";
 
 import Skeleton from "@material-ui/lab/Skeleton";
 
-import GetPlanetAspects from "./GetPlanetAspects";
+import getPlanetAspects from "../utilities/getPlanetAspects";
 
 function PlanetPanel(props) {
   const planet = props.planet;
@@ -103,7 +103,7 @@ function PlanetPanel(props) {
       : "paneldescription dropcap";
 
   // data and methods for planet aspects
-  const aspectList = GetPlanetAspects(props.planetsQuery, planet);
+  const aspectList = getPlanetAspects(props.planetsQuery, planet);
   function RenderAspects({ aspect }) {
     return (
       <div>

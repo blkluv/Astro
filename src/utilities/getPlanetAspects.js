@@ -1,6 +1,6 @@
 import { aspectData } from "../private/aspectData";
 
-function GetPlanetAspects(planetdata, planetName) {
+function getPlanetAspects(planetdata, planetName) {
   const planetIndex = (planetName) =>
     ({
       Sun: 0,
@@ -170,4 +170,4 @@ function GetPlanetAspects(planetdata, planetName) {
   return getTitles();
 }
 
-export default GetPlanetAspects;
+export default getPlanetAspects;
