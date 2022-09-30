@@ -22,7 +22,7 @@ function FooterText() {
         target="_blank"
         style={{ color: "white" }}
       >
-        Version {pjson.version}
+        Version: {pjson.version}
       </a>{" "}
       - by Eric Suzuki
     </div>
