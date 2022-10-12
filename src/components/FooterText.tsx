@@ -1,14 +1,11 @@
 import React from "react";
-import GitHubIcon from "@material-ui/icons/GitHub";
+import GitHubIcon from "@mui/icons-material/GitHub";
 
-var pjson = require("../../package.json");
-console.log(pjson.version);
+const pjson = require("../../package.json");
 
 function FooterText() {
   return (
-    <div>
-      <br />
-      <br />
+    <div style={{ padding: "32px 0px" }}>
       <GitHubIcon
         style={{
           fontSize: "15px",
@@ -20,6 +17,7 @@ function FooterText() {
       <a
         href="https://github.com/erikksuzuki/Astrology"
         target="_blank"
+        rel="noopener noreferrer"
         style={{ color: "white" }}
       >
         Version: {pjson.version}

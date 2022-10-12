@@ -2,9 +2,11 @@
 
 # dependencies
 /node_modules
-/src/private/apiData.js
-/src/private/aspectData.js
-/src/private/planetData.js
+/public
+/ios
+/android
+/src-tauri
+/src/private
 access_token.js
 planets.psd
 /.pnp

@@ -1,24 +1,41 @@
 {
   "name": "astrology-app",
-  "version": "0.5.3",
+  "version": "0.7.0",
   "private": true,
-  "homepage": ".",
   "dependencies": {
-    "@material-ui/core": "^4.10.1",
-    "@material-ui/icons": "^4.9.1",
-    "@material-ui/lab": "^4.0.0-alpha.55",
-    "@testing-library/jest-dom": "^4.2.4",
-    "@testing-library/react": "^9.3.2",
-    "@testing-library/user-event": "^7.1.2",
-    "astrologyjs": "^1.3.1",
-    "axios": "^0.21.4",
-    "querystring": "^0.2.1",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1",
-    "react-html-parser": "^2.0.2",
+    "@capacitor/android": "^4.3.0",
+    "@capacitor/cli": "^4.3.0",
+    "@capacitor/core": "^4.3.0",
+    "@capacitor/ios": "^4.3.0",
+    "@emotion/react": "^11.10.4",
+    "@emotion/styled": "^11.10.4",
+    "@mantine/core": "^5.5.4",
+    "@mantine/dates": "^5.5.4",
+    "@mantine/dropzone": "^5.5.4",
+    "@mantine/form": "^5.5.4",
+    "@mantine/hooks": "^5.5.4",
+    "@mantine/notifications": "^5.5.4",
+    "@mantine/rte": "^5.5.4",
+    "@mui/icons-material": "^5.10.6",
+    "@mui/material": "^5.10.8",
+    "@testing-library/jest-dom": "^5.16.5",
+    "@testing-library/react": "^13.4.0",
+    "@testing-library/user-event": "^13.5.0",
+    "@types/jest": "^27.5.2",
+    "@types/node": "^16.11.64",
+    "@types/react-dom": "^18.0.6",
+    "city-timezones": "^1.2.1",
+    "dayjs": "^1.11.5",
+    "ephemeris": "^2.0.0",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.1",
-    "react-swipeable-views": "^0.13.9"
+    "react-swipeable-views": "^0.14.0",
+    "tss-react": "^4.3.4",
+    "typescript": "^4.8.4",
+    "tz-offset": "^0.0.2",
+    "web-vitals": "^2.1.4"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -27,7 +44,10 @@
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
-    "extends": "react-app"
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
   },
   "browserslist": {
     "production": [
@@ -40,5 +60,18 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@tauri-apps/cli": "^1.1.1",
+    "@types/babel__generator": "^7.6.4",
+    "@types/babel__template": "^7.4.1",
+    "@types/react": "^18.0.21",
+    "@types/react-router-dom": "^5.3.3",
+    "@types/react-swipeable-views": "^0.13.1",
+    "cross-env": "^7.0.3",
+    "mini-css-extract-plugin": "^0.9.0"
+  },
+  "resolutions": {
+    "mini-css-extract-plugin": "2.4.7"
   }
 }

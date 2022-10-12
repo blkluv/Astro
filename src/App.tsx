@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from "react";
-import MainComponent from "./components/MainComponent";
-import { HashRouter as Router } from "react-router-dom";
+import React from "react";
 import "./App.css";
+import { HashRouter as Router } from "react-router-dom";
+import MainComponent from "./components/MainComponent";
 
 function App() {
   return (

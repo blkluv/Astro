@@ -1,31 +1,28 @@
 import React from "react";
 import { planetData } from "../private/planetData";
-import ReactHtmlParser from "react-html-parser";
-import { makeStyles } from "@material-ui/core/styles";
 
-import Skeleton from "@material-ui/lab/Skeleton";
+import Skeleton from "@mui/material/Skeleton";
 
 import getPlanetAspects from "../utilities/getPlanetAspects";
 
-function PlanetPanel(props) {
-  const planet = props.planet;
-  const sign = props.sign;
+function PlanetPanel(props: any) {
+  const planet: string = props.planet;
+  const sign: string = props.sign;
 
-  const signNumber = (sign) =>
-    ({
-      Mesha: 0,
-      Vrishabha: 1,
-      Mithuna: 2,
-      Karka: 3,
-      Simha: 4,
-      Kanya: 5,
-      Tula: 6,
-      Vrischika: 7,
-      Dhanu: 8,
-      Makara: 9,
-      Kumbha: 10,
-      Meena: 11,
-    }[sign]);
+  const signNumber = [
+    "Aries",
+    "Taurus",
+    "Gemini",
+    "Cancer",
+    "Leo",
+    "Virgo",
+    "Libra",
+    "Scorpio",
+    "Sagittarius",
+    "Capricorn",
+    "Aquarius",
+    "Pisces",
+  ];
 
   const planetImage = "planets/" + planet.toLowerCase() + ".png";
 
@@ -61,9 +58,7 @@ function PlanetPanel(props) {
 
   // data and methods for constelation image
   const panelsignClass = () =>
-    signNumber(sign) === undefined
-      ? "panelsign empty"
-      : constelationClass[signNumber(sign)];
+    !sign ? "panelsign empty" : constelationClass[signNumber.indexOf(sign)];
   const rightarrowClass = () =>
     props.currenttab <= 5 ? "rightarrow" : "rightarrow disabled";
   const leftarrowClass = () =>
@@ -84,35 +79,32 @@ function PlanetPanel(props) {
   }
 
   // data and methods for planet and sign descriptions
-  const panelTitle = () =>
-    signNumber(sign) === undefined ? planet : "Natal " + planet + " in " + sign;
+  const panelTitle = () => (!sign ? planet : "Natal " + planet + " in " + sign);
   const planetDescription = () => {
-    let message;
+    let message: any;
     if (props.isLoading) {
       message = "Loading data...";
     } else {
-      signNumber(sign) === undefined
-        ? (message = "Please enter a birth date")
-        : (message = ReactHtmlParser(planetData[signNumber(sign)][planet]));
+      !sign
+        ? (message = "Please enter a birth place and date")
+        : (message = planetData[signNumber.indexOf(sign)][planet]);
     }
     return message;
   };
   const paneldescriptionClass = () =>
-    signNumber(sign) === undefined
-      ? "paneldescription emptier"
-      : "paneldescription dropcap";
+    !sign ? "paneldescription emptier" : "paneldescription dropcap";
 
   // data and methods for planet aspects
-  const aspectList = getPlanetAspects(props.planetsQuery, planet);
-  function RenderAspects({ aspect }) {
+  const aspectList = getPlanetAspects(props.planetData, planet);
+  function RenderAspects(props: any) {
     return (
       <div>
-        <div className={"aspecttitle " + aspect[3].toLowerCase()}>
-          {aspect[0]}
+        <div className={"aspecttitle " + props.aspect[3].toLowerCase()}>
+          {props.aspect[0]}
         </div>
         <div className="aspectcontent">
           <p>
-            {aspect[2]} {aspect[1]}
+            {props.aspect[2]} {props.aspect[1]}
           </p>
         </div>
       </div>
@@ -122,7 +114,12 @@ function PlanetPanel(props) {
   function RenderLoader() {
     if (props.isLoading) {
       return (
-        <Skeleton variant="circle" animation="wave" width={185} height={185} />
+        <Skeleton
+          variant="circular"
+          animation="wave"
+          width={185}
+          height={185}
+        />
       );
     } else {
       return null;
@@ -134,18 +131,24 @@ function PlanetPanel(props) {
       <div className="panelsigncontainer">
         <div
           className={panelsignClass()}
-          style={constelationImages[signNumber(sign)]}
+          style={constelationImages[signNumber.indexOf(sign)]}
         >
           <RenderLoader />
         </div>
-        <img src={planetImage} className="panelplanet" />
+        <img
+          src={planetImage}
+          alt={props.planet ? props.planet : "planet"}
+          className="panelplanet"
+        />
         <img
           src="leftarrow.png"
+          alt={"left-arrow"}
           className={leftarrowClass()}
           onClick={handleChangeLeft}
         />
         <img
           src="rightarrow.png"
+          alt={"right-arrow"}
           className={rightarrowClass()}
           onClick={handleChangeRight}
         />
@@ -153,11 +156,25 @@ function PlanetPanel(props) {
 
       <div className="paneltitle">{panelTitle()}</div>
       <div className={paneldescriptionClass()}>
-        <p>{planetDescription()}</p>
+        <p>
+          {planetDescription()
+            .split("<br /><br />")
+            .map((paragraph: string, index: string) => {
+              return (
+                <span key={index}>
+                  {paragraph}
+                  <br />
+                  <br />
+                </span>
+              );
+            })}
+        </p>
       </div>
-      {aspectList.map((aspect) => {
-        return <RenderAspects aspect={aspect} />;
-      })}
+      {sign
+        ? aspectList.map((aspect: any, index: any) => {
+            return <RenderAspects key={index} aspect={aspect} />;
+          })
+        : null}
     </div>
   );
 }

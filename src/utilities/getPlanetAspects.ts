@@ -1,7 +1,7 @@
 import { aspectData } from "../private/aspectData";
 
-function getPlanetAspects(planetdata, planetName) {
-  const planetIndex = (planetName) =>
+function getPlanetAspects(planetdata: any, planetName: string) {
+  const planetIndex = (planetName: string): any =>
     ({
       Sun: 0,
       Moon: 1,
@@ -10,8 +10,12 @@ function getPlanetAspects(planetdata, planetName) {
       Mars: 4,
       Jupiter: 5,
       Saturn: 6,
+      Uranus: 7,
+      Neptune: 8,
+      Pluto: 9,
     }[planetName]);
-  const SkyLocation = (planet) =>
+
+  const SkyLocation = (planet: string) =>
     ({
       Sun: planetdata[0].longitude,
       Moon: planetdata[1].longitude,
@@ -20,8 +24,11 @@ function getPlanetAspects(planetdata, planetName) {
       Mars: planetdata[4].longitude,
       Jupiter: planetdata[5].longitude,
       Saturn: planetdata[6].longitude,
+      Uranus: planetdata[7].longitude,
+      Neptune: planetdata[8].longitude,
+      Pluto: planetdata[9].longitude,
     }[planet]);
-  function GetAspect(degree) {
+  function GetAspect(degree: number) {
     if (degree === undefined) {
       return "None";
     } else if (degree >= 0 && degree <= 8) {
@@ -54,6 +61,15 @@ function getPlanetAspects(planetdata, planetName) {
       GetAspect(
         Math.round(Math.abs(SkyLocation("Sun") - SkyLocation("Saturn")))
       ),
+      GetAspect(
+        Math.round(Math.abs(SkyLocation("Sun") - SkyLocation("Uranus")))
+      ),
+      GetAspect(
+        Math.round(Math.abs(SkyLocation("Sun") - SkyLocation("Neptune")))
+      ),
+      GetAspect(
+        Math.round(Math.abs(SkyLocation("Sun") - SkyLocation("Pluto")))
+      ),
     ],
     [
       "None",
@@ -72,6 +88,15 @@ function getPlanetAspects(planetdata, planetName) {
       GetAspect(
         Math.round(Math.abs(SkyLocation("Moon") - SkyLocation("Saturn")))
       ),
+      GetAspect(
+        Math.round(Math.abs(SkyLocation("Moon") - SkyLocation("Uranus")))
+      ),
+      GetAspect(
+        Math.round(Math.abs(SkyLocation("Moon") - SkyLocation("Neptune")))
+      ),
+      GetAspect(
+        Math.round(Math.abs(SkyLocation("Moon") - SkyLocation("Pluto")))
+      ),
     ],
     [
       "None",
@@ -88,6 +113,15 @@ function getPlanetAspects(planetdata, planetName) {
       GetAspect(
         Math.round(Math.abs(SkyLocation("Mercury") - SkyLocation("Saturn")))
       ),
+      GetAspect(
+        Math.round(Math.abs(SkyLocation("Mercury") - SkyLocation("Uranus")))
+      ),
+      GetAspect(
+        Math.round(Math.abs(SkyLocation("Mercury") - SkyLocation("Neptune")))
+      ),
+      GetAspect(
+        Math.round(Math.abs(SkyLocation("Mercury") - SkyLocation("Pluto")))
+      ),
     ],
     [
       "None",
@@ -102,6 +136,15 @@ function getPlanetAspects(planetdata, planetName) {
       GetAspect(
         Math.round(Math.abs(SkyLocation("Venus") - SkyLocation("Saturn")))
       ),
+      GetAspect(
+        Math.round(Math.abs(SkyLocation("Venus") - SkyLocation("Uranus")))
+      ),
+      GetAspect(
+        Math.round(Math.abs(SkyLocation("Venus") - SkyLocation("Neptune")))
+      ),
+      GetAspect(
+        Math.round(Math.abs(SkyLocation("Venus") - SkyLocation("Pluto")))
+      ),
     ],
     [
       "None",
@@ -114,6 +157,15 @@ function getPlanetAspects(planetdata, planetName) {
       GetAspect(
         Math.round(Math.abs(SkyLocation("Mars") - SkyLocation("Saturn")))
       ),
+      GetAspect(
+        Math.round(Math.abs(SkyLocation("Mars") - SkyLocation("Uranus")))
+      ),
+      GetAspect(
+        Math.round(Math.abs(SkyLocation("Mars") - SkyLocation("Neptune")))
+      ),
+      GetAspect(
+        Math.round(Math.abs(SkyLocation("Mars") - SkyLocation("Pluto")))
+      ),
     ],
     [
       "None",
@@ -124,11 +176,20 @@ function getPlanetAspects(planetdata, planetName) {
       GetAspect(
         Math.round(Math.abs(SkyLocation("Jupiter") - SkyLocation("Saturn")))
       ),
+      GetAspect(
+        Math.round(Math.abs(SkyLocation("Jupiter") - SkyLocation("Uranus")))
+      ),
+      GetAspect(
+        Math.round(Math.abs(SkyLocation("Jupiter") - SkyLocation("Neptune")))
+      ),
+      GetAspect(
+        Math.round(Math.abs(SkyLocation("Jupiter") - SkyLocation("Pluto")))
+      ),
     ],
-    ["None", "None", "None", "None", "None", "None"],
+    ["None", "None", "None", "None", "None", "None", "None", "None", "None"],
   ];
   function getTitles() {
-    const aspectExplanation = (aspect) =>
+    const aspectExplanation = (aspect: string): any =>
       ({
         Conjunct:
           "In relation to the Earth, these two celestial bodies were aligned at the time of your birth.",
@@ -141,8 +202,9 @@ function getPlanetAspects(planetdata, planetName) {
         Opposition:
           "In relation to the Earth, these two celestial bodies formed a 180-degree angle at the time of your birth.",
       }[aspect]);
-    let descriptionarray = [];
-    function PushAspect(aspect, index) {
+
+    let descriptionarray: any = [];
+    function PushAspect(aspect: string, index: any) {
       if (aspect === "None") {
         return null;
       } else if (
@@ -160,13 +222,12 @@ function getPlanetAspects(planetdata, planetName) {
         ]);
       }
     }
-    for (let i = 0; i <= 5; i++) {
+    for (let i = 0; i <= 8; i++) {
       PushAspect(totalAspectlist[planetIndex(planetName)][i], [i]);
     }
 
     return descriptionarray;
   }
-  console.log(getTitles());
   return getTitles();
 }
 

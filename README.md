@@ -1,8 +1,19 @@
-# Vedic Astrology App
+# Astrology App
 
 Click here for working demo: [https://astrology.alkemyst.co/]
 
 ## Version history
+
+### v0.7.0 - October 12, 2022
+
+- Refactored all components into TypeScript format
+- Updated React to version 17
+- Updated Material UI to version 5
+- Removed dependency: Prokerala's REST API
+- Removed dependency: ReactHTMLParser
+- Added Moshier's Ephemeris for calculations
+- Added location and time precision
+- Added Uranus, Neptune and Pluto for aspect calculations
 
 ### v0.5.3 - September 15, 2022
 
