@@ -4,6 +4,11 @@ Click here for working demo: [https://astrology.alkemyst.co/]
 
 ## Version history
 
+### v0.8.0 - October 14, 2022
+
+- Updated horoscope calculations to use 0xstarcat's package
+- Fetched house/ascendant data for future display
+
 ### v0.7.0 - October 12, 2022
 
 - Refactored all components into TypeScript format
