@@ -4152,6 +4152,15 @@
     "inherits" "^2.0.1"
     "safe-buffer" "^5.0.1"
 
+"circular-natal-horoscope-js@^1.1.0":
+  "integrity" "sha512-MsOrwRa6pgDpv9tgnhB7sKhjQcWInSW0DnbF9XFnByKLFBJGHyLZOZGBS3JBDUvL1Ot+8eotqWMx9D3VxpkqxA=="
+  "resolved" "https://registry.npmjs.org/circular-natal-horoscope-js/-/circular-natal-horoscope-js-1.1.0.tgz"
+  "version" "1.1.0"
+  dependencies:
+    "moment" "^2.24.0"
+    "moment-timezone" "^0.5.26"
+    "tz-lookup" "^6.1.24"
+
 "city-timezones@^1.2.1":
   "integrity" "sha512-hruuB611QFoUFMsan7xd9B2VPMrA8XC716O/999WW34kmaJUT1hxKF2W8TSXAWkhSqgvbu70DjcDv7/wpM6vow=="
   "resolved" "https://registry.npmjs.org/city-timezones/-/city-timezones-1.2.1.tgz"
@@ -8688,6 +8697,18 @@
   "resolved" "https://registry.npmjs.org/mkdirp/-/mkdirp-1.0.4.tgz"
   "version" "1.0.4"
 
+"moment-timezone@^0.5.26":
+  "integrity" "sha512-uEDzDNFhfaywRl+vwXxffjjq1q0Vzr+fcQpQ1bU0kbzorfS7zVtZnCnGc8mhWmF39d4g4YriF6kwA75mJKE/Zg=="
+  "resolved" "https://registry.npmjs.org/moment-timezone/-/moment-timezone-0.5.37.tgz"
+  "version" "0.5.37"
+  dependencies:
+    "moment" ">= 2.9.0"
+
+"moment@^2.24.0", "moment@>= 2.9.0":
+  "integrity" "sha512-5LC9SOxjSc2HF6vO2CyuTDNivEdoz2IvyJJGj6X8DJ0eFyfszE0QiEd+iXmBvUP3WHxSjFH/vIsA0EN00cgr8w=="
+  "resolved" "https://registry.npmjs.org/moment/-/moment-2.29.4.tgz"
+  "version" "2.29.4"
+
 "move-concurrently@^1.0.1":
   "integrity" "sha512-hdrFxZOycD/g6A6SoI2bB5NA/5NEqD0569+S47WZhPvm46sD50ZHdYaFmnua5lndde9rCHGjmfK7Z8BuCt/PcQ=="
   "resolved" "https://registry.npmjs.org/move-concurrently/-/move-concurrently-1.0.1.tgz"
@@ -12440,6 +12461,11 @@
   "integrity" "sha512-QCh+85mCy+h0IGff8r5XWzOVSbBO+KfeYrMQh7NJ58QujwcE22u+NUSmUxqF+un70P9GXKxa2HCNiTTMJknyjQ=="
   "resolved" "https://registry.npmjs.org/typescript/-/typescript-4.8.4.tgz"
   "version" "4.8.4"
+
+"tz-lookup@^6.1.24":
+  "integrity" "sha512-fFewT9o1uDzsW1QnUU1ValqaihFnwiUiiHr1S79/fxOzKXYYvX+EHeRnpvQJ9B3Qg67wPXT6QF2Esc4pFOrvLg=="
+  "resolved" "https://registry.npmjs.org/tz-lookup/-/tz-lookup-6.1.25.tgz"
+  "version" "6.1.25"
 
 "tz-offset@^0.0.2":
   "integrity" "sha512-nCaj0ZpQ8j8iySMJi8G829wgbTQv2EuZe3JVIOWAYQGd2TZf0bOF8TGXz8j2g17B5WDoW85lt15zguh6OnnRZw=="

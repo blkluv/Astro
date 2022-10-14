@@ -24,6 +24,7 @@
     "@types/jest": "^27.5.2",
     "@types/node": "^16.11.64",
     "@types/react-dom": "^18.0.6",
+    "circular-natal-horoscope-js": "^1.1.0",
     "city-timezones": "^1.2.1",
     "dayjs": "^1.11.5",
     "ephemeris": "^2.0.0",

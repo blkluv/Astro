@@ -15,17 +15,22 @@ import CitySearchInput from "./CitySearchInput";
 import BirthDateInput from "./BirthDateInput";
 import BirthTimeInput from "./BirthTimeInput";
 import NatalHoroscope from "./NatalHoroscope";
+import { TimeZoneData } from "../objectTypes/TimeZoneData";
 
 // import HomePage from "./HomePage";
 
 export default function MainComponent() {
-  const [timeZone, setTimeZone] = useState<string>("+00:00");
+  const [timeZone, setTimeZone] = useState<TimeZoneData>({
+    utcOffset: "+00:00",
+    lat: 0,
+    lng: 0,
+  });
   const [birthDate, setBirthDate] = useState<string>("");
   const [birthTime, setBirthTime] = useState<string>("");
   // const [isLoading, setIsLoading] = useState(false);
-  const dateTime = `${birthDate}T${
-    birthTime ? birthTime : "12:00"
-  }:00.000${timeZone}`;
+  const dateTime = `${birthDate}T${birthTime ? birthTime : "12:00"}:00.000${
+    timeZone.utcOffset
+  }`;
 
   const [planetData, setPlanetData] = useState<any>([
     "",
@@ -41,8 +46,8 @@ export default function MainComponent() {
   ]);
 
   useEffect(() => {
-    const horoscopeQuery: any = getHoroscopeData(dateTime);
-    if (timeZone && birthDate) {
+    const horoscopeQuery: any = getHoroscopeData(dateTime, timeZone);
+    if (timeZone.utcOffset && birthDate) {
       setPlanetData([
         horoscopeQuery.data.planet_position[0],
         horoscopeQuery.data.planet_position[1],

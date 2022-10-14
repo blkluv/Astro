@@ -13,12 +13,17 @@ export default function CitySearchInput(props: any) {
   }
   function handleCitySelect(e: any, value: any): void {
     if (value) {
-      props.setTimeZone(formatTimeOffset(value.timezone));
+      props.setTimeZone({
+        utcOffset: formatTimeOffset(value.timezone),
+        lat: value.lat,
+        lng: value.lng,
+      });
     }
   }
   function getCityQueryResults() {
     const rawResultData = cityTimezones.lookupViaCity(cityQuery);
     let parsedCityList: {}[] = [];
+
     rawResultData.map((result: any) => {
       let province: string = result.province
         ? result.province !== result.city
@@ -27,6 +32,8 @@ export default function CitySearchInput(props: any) {
         : result.country;
       parsedCityList.push({
         label: result.city + ", " + province,
+        lat: result.lat,
+        lng: result.lng,
         timezone: result.timezone,
       });
       return null;
