@@ -1,6 +1,7 @@
 # Astrology App
 
-Click here for working demo: [https://astrology.alkemyst.co/]
+Click here for working demo: [https://archived.alkemyst.app/astrology/]
+Note: This project marks my initial foray into using modern javascript libraries, and as such, much of the code stored here is not representative of my current coding capabilities. It's a fun reminder of some of my earliest projects and where I've been to get here, though :) 
 
 ## Version history
 
